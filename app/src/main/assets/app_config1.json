@@ -1,0 +1,10 @@
+{
+  "config": {
+    "clientId": "amzn1.application-oa2-client.7baf22f9bde94076a62641563b87b180",
+    "productId" : "MyAlexa"
+  },
+  "metrics" : {
+    "amazonId" : "A9XO1NVAZHOHF",
+    "stage" : "Beta"
+  }
+}

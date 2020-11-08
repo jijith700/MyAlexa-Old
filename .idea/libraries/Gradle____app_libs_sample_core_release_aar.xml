@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: ./app/libs/sample-core-release.aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c9ad30fdac593484a092fb692d6367b5/jetified-sample-core-release/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c9ad30fdac593484a092fb692d6367b5/jetified-sample-core-release/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c9ad30fdac593484a092fb692d6367b5/jetified-sample-core-release/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/971f470b3ab98dcd3ae548cbefd29391/jetified-sample-core-release/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/971f470b3ab98dcd3ae548cbefd29391/jetified-sample-core-release/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/971f470b3ab98dcd3ae548cbefd29391/jetified-sample-core-release/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

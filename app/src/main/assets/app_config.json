@@ -1,0 +1,10 @@
+{
+  "config": {
+    "clientId": "amzn1.application-oa2-client.f54288eb00c04a79821858ce13811dfc",
+    "productId" : "PanaAlexa"
+  },
+  "metrics" : {
+    "amazonId" : "A23568Z86GHCWS",
+    "stage" : "Beta"
+  }
+}

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MyAlexa</string>
+
+    <string name="preference_client_id">Client ID Key</string>
+    <string name="preference_client_secret">Client Secret Key</string>
+    <string name="preference_product_id">Product ID Key</string>q
+    <string name="preference_product_dsn">Product DSN Key</string>
+    <string name="preference_refresh_token">Refresh Token Key</string>
+
+    <string name="service_connected">Service connected</string>
+    <string name="service_disconnected">Service disconnected</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
