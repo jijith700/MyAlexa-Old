@@ -19,7 +19,7 @@ class DatabaseMangerImpl(private var context: Context) : DatabaseManager {
     }
 
     override fun getRefreshToken(): String {
-      return appDatabaseRepository.getRefreshToken()
+      return appDatabaseRepository.getRefreshToken().getCompleted()
     }
 
     override fun clearRefreshToken() {

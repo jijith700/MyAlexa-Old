@@ -22,12 +22,27 @@ class MainRepository(var context: Context) {
     var errrorMessage = MutableLiveData<String>()
     var user = MutableLiveData<User>()
 
+    lateinit var serviceConnection : ServiceConnection
+
 
     /**
      * Variable hold the object of ApiService and the it will initialized here.
      */
     init {
+        startService()
         connectService(IMyAlexaServiceInterface::class.java.name)
+    }
+
+    /**
+     * Start the alexaService
+     *
+     */
+    private fun startService() {
+        val className = "com.jijith.alexa.service.AlexaService"
+        val packageName = "com.jijith.alexa"
+        val i = Intent(className)
+        i.component = ComponentName(packageName, className)
+            context.startService(i)
     }
 
     /**
@@ -39,7 +54,7 @@ class MainRepository(var context: Context) {
         Timber.d(serviceName)
         val className = "com.jijith.alexa.service.AlexaService"
         val packageName = "com.jijith.alexa"
-        val serviceConnection = RemoteServiceConnection(context, serviceName)
+        serviceConnection = RemoteServiceConnection(context, serviceName)
         val i = Intent(className)
         i.action = serviceName
         i.component = ComponentName(packageName, className)
@@ -48,6 +63,10 @@ class MainRepository(var context: Context) {
         Toast.makeText(context, "BindService  $ret", Toast.LENGTH_LONG).show()
     }
 
+
+    fun stopBinding() {
+        context.unbindService(serviceConnection)
+    }
 
     /**
      * Class makes the connection with alexa service

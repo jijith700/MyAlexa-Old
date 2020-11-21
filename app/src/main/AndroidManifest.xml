@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <!-- Leak canary needs access to External storage to save heap dumps -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".base.MyAlexa"
@@ -23,7 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        
+
         <service
             android:name=".service.AlexaService"
             android:enabled="true"
@@ -31,7 +32,8 @@
         <!--            android:process=":externalProcess" />-->
 
         <activity android:name=".hmi.MainActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

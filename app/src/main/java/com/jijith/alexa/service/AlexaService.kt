@@ -46,7 +46,7 @@ class AlexaService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-//        alexaEngineManager = AlexaEngineManagerImpl(baseContext)
+        alexaEngineManager = AlexaEngineManagerImpl(baseContext)
     }
 
     override fun onBind(intent: Intent): IBinder {
@@ -59,6 +59,7 @@ class AlexaService : Service() {
     }
 
     private fun runAsForeground() {
+        Timber.d("notification started")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val NOTIFICATION_CHANNEL_ID = "com.jijith.alexa"
             val channelName = "My Background Service"
@@ -71,7 +72,6 @@ class AlexaService : Service() {
             chan.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
             val manager =
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            assert(manager != null)
             manager.createNotificationChannel(chan)
             val notificationBuilder = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
             val notification: Notification = notificationBuilder.setOngoing(true)
@@ -80,7 +80,7 @@ class AlexaService : Service() {
                 .setPriority(NotificationManager.IMPORTANCE_MIN)
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .build()
-            startForeground(11929129, notification)
+            startForeground(1234567890, notification)
         } else startForeground(1, Notification())
     }
 

@@ -25,6 +25,10 @@ class MainViewModel() : ViewModel() {
         success = mainRepository.success
     }
 
+    fun stopBinding() {
+        mainRepository.stopBinding()
+    }
+
     fun startCBL() {
         mainRepository.startCBL()
     }

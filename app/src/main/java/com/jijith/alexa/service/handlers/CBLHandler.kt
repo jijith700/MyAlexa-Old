@@ -8,6 +8,7 @@ import com.amazon.aace.alexa.AlexaClient
 import com.amazon.aace.cbl.CBL
 import com.jijith.alexa.R
 import com.jijith.alexa.service.interfaces.AuthStateObserver
+import com.jijith.alexa.service.interfaces.managers.AlexaEngineManager
 import com.jijith.alexa.service.interfaces.managers.DatabaseManager
 import com.jijith.alexa.utils.USER_CODE
 import com.jijith.alexa.utils.VERIFICATION_URI
@@ -15,7 +16,17 @@ import org.json.JSONException
 import org.json.JSONObject
 import timber.log.Timber
 
-class CBLHandler(private var context: Context, private var databaseManager: DatabaseManager) : CBL() {
+class CBLHandler(
+    private var alexaEngineManager: AlexaEngineManager,
+    private var context: Context,
+    private var databaseManager: DatabaseManager
+) : CBL() {
+
+    private var refreshToken = ""
+
+    init {
+        refreshToken = databaseManager.getRefreshToken()
+    }
 
     override fun cblStateChanged(
         state: CBLState?,
@@ -38,6 +49,7 @@ class CBLHandler(private var context: Context, private var databaseManager: Data
                 renderJSON.put(VERIFICATION_URI, url)
                 renderJSON.put(USER_CODE, code)
                 Timber.d(renderJSON.toString())
+                alexaEngineManager.onReceiveCBLCode(url, code)
             } catch (e: Exception) {
                 Timber.e(e.message)
             }
@@ -72,21 +84,19 @@ class CBLHandler(private var context: Context, private var databaseManager: Data
             }
         }
     }
-    
+
     override fun clearRefreshToken() {
         databaseManager.clearRefreshToken()
     }
 
     override fun setRefreshToken(refreshToken: String?) {
+        this.refreshToken = refreshToken!!
         databaseManager.setRefreshToken(refreshToken)
     }
 
     override fun getRefreshToken(): String? {
-        return databaseManager.getRefreshToken()
-    }
-
-    override fun setUserProfile(name: String?, email: String?) {
-        Timber.d("User profile details updated.")
+        Timber.e("refreshToken %s", refreshToken)
+        return refreshToken
     }
 
     fun startCBL() {

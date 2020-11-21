@@ -191,7 +191,7 @@ class AlexaEngineManagerImpl(private var context: Context) : AlexaEngineManager 
             throw RuntimeException("Could not register NetworkInfoProvider platform interface")
 
         // CBL
-        cblHandler = CBLHandler(context, databaseManger)
+        cblHandler = CBLHandler(this, context, databaseManger)
         if (!mEngine.registerPlatformInterface(cblHandler))
             throw RuntimeException("Could not register CBL platform interface")
         //mAlexaClient.registerAuthStateObserver(mCBLHandler)
@@ -573,5 +573,9 @@ class AlexaEngineManagerImpl(private var context: Context) : AlexaEngineManager 
         } else {
             Timber.d("error")
         }
+    }
+
+    override fun onReceiveCBLCode(url: String?, code: String?) {
+        Timber.d("URL: %s Code: %s", url, code)
     }
 }
